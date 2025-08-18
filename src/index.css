@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #002147;
+  color: white;
+}
+
+@theme {
+  --color-bg: #002147;
+  --color-navy-dark: #1e293b;
+  --color-accent: #fb923c;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-soft-white: #d3dce6d7;
+  --color-border-gray: #708090;
+}
+
+@layer utilities {
+  .container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media (min-width: 450px) {
+    .container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
