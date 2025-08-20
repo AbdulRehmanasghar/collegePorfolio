@@ -1,11 +1,17 @@
-
+import { Routes, Route, Link } from "react-router-dom";
+import React from 'react';
+import Events from "./Pages/Events ";
 
 function App() {
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <h1 className="text-3xl">RAJANPUR COLLEGE</h1>
-    </div>
+    
+   
+     <Routes>
+      <Route path='/events' element={<Events />}/>
+     
+
+     </Routes>
   )
 }
 
