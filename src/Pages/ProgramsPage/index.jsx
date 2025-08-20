@@ -148,7 +148,7 @@ export default function ProgramsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white md:py-[300px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="flex mb-6" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-2">
@@ -234,12 +234,19 @@ export default function ProgramsPage() {
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
                       {program.description}
                     </p>
+
+                    {/* Animated underline link */}
                     <a
                       href="#"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
+                      className="inline-flex flex-col items-start text-blue-600 hover:text-blue-800 font-medium text-sm group"
                     >
-                      Read More
-                      <span className="ml-1">→</span>
+                      <span className="inline-flex items-center">
+                        Read More
+                        <span className="ml-1 transition-transform transform group-hover:translate-x-1">
+                          →
+                        </span>
+                      </span>
+                      <span className="block h-0.5 bg-blue-600 w-0 group-hover:w-full transition-all duration-300 mt-1" />
                     </a>
                   </div>
                 </motion.div>
@@ -280,12 +287,19 @@ export default function ProgramsPage() {
                       <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
                         {program.description}
                       </p>
+
+                      {/* Animated underline link */}
                       <a
                         href="#"
-                        className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
+                        className="inline-flex flex-col items-start text-blue-600 hover:text-blue-800 font-medium text-sm group"
                       >
-                        Read More
-                        <span className="ml-1">→</span>
+                        <span className="inline-flex items-center">
+                          Read More
+                          <span className="ml-1 transition-transform transform group-hover:translate-x-1">
+                            →
+                          </span>
+                        </span>
+                        <span className="block h-0.5 bg-blue-600 w-0 group-hover:w-full transition-all duration-300 mt-1" />
                       </a>
                     </div>
                   </div>
