@@ -48,7 +48,7 @@ export default function NotFound() {
                   cx="227.5"
                   cy="81.5"
                   r="68.5"
-                  fill="#4A6CF7"
+                  fill="#ff6b00"
                 />
               </mask>
               <g mask="url(#mask0_116:1137)">
