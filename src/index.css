@@ -8,12 +8,13 @@ body {
 
 @theme {
   --color-bg: #002147;
-  --color-navy-dark: #1e293b;
+  --color-bg2: #002140;
+  --color-navy-dark: #0F172A;
   --color-accent: #fb923c;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-soft-white: #d3dce6d7;
-  --color-border-gray: #708090;
+  --color-border-gray:#708090;
 }
 
 @layer utilities {

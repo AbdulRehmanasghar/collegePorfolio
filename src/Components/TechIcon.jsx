@@ -1,5 +1,9 @@
 import {
   Atom,
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
   TypeOutline,
   Wind,
   BarChart2,
@@ -68,6 +72,10 @@ import {
   DollarSign,
   Monitor,
   Home,
+  Award,
+  Rotate3d,
+  Notebook,
+  MoveRight,
 } from "lucide-react";
 
 const TechIcon = ({ name, className = "" }) => {
@@ -141,6 +149,16 @@ const TechIcon = ({ name, className = "" }) => {
     "dollar-sign": <DollarSign className={className} />,
     monitor: <Monitor className={className} />,
     home: <Home className={className} />,
+    award: <Award className={className} />,
+    rotate: <Rotate3d className={className} />,
+    notebook: <Notebook className={className} />,
+    moveright: <MoveRight className={className}  />,
+    facebook: <Facebook className={className}  />,
+    instagram: <Instagram className={className}  />,
+    linkedin: <Linkedin className={className}  />,
+    youtube: <Youtube className={className}  />,
+
+
   };
 
   return icons[name.toLowerCase()] || <span className={className}>{name}</span>;

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes as RouterRoutes } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
+import HomePage from "./Pages/HomePage/index"
 import ProgramsPage from "./Pages/ProgramsPage";
 import FacultyPage from "./Pages/FacultyPage";
 import EventsPage from "./Pages/EventsPage";
@@ -8,10 +8,13 @@ import ContactUsPage from "./Pages/ContactUsPage";
 import ScrollToTop from "./Components/ScrollToTop";
 import ScrollUp from "./Components/ScrollUp";
 import NotFound from "./Components/NotFound";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <ScrollToTop />
       <RouterRoutes>
         <Route path="/" element={<HomePage />} />
@@ -23,6 +26,7 @@ const AppRoutes = () => {
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       <ScrollUp />
+      <Footer />
     </BrowserRouter>
   );
 };

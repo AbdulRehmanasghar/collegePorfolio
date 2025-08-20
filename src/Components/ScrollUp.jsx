@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import TechIcon from "./TechIcon";
+import Button from "./Button";
 
 export default function ScrollUp() {
   const [isVisible, setIsVisible] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -11,7 +14,7 @@ export default function ScrollUp() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -19,21 +22,22 @@ export default function ScrollUp() {
     };
 
     window.addEventListener("scroll", toggleVisibility);
-
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   return (
-    <div className="fixed right-8 bottom-8 z-99">
+    <>
       {isVisible && (
-        <div
+        <Button
           onClick={scrollToTop}
-          aria-label="scroll to top"
-          className="bg-accent hover:shadow-lg flex h-10 w-10 cursor-pointer items-center justify-center rounded-md text-white shadow-md transition duration-300 ease-in-out"
+          aria-label="Scroll to top"
+          variant="primary"
+          size="scroll-up"
+          className="fixed bottom-10 right-10 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out z-50 cursor-pointer"
         >
-          <span className="mt-2 h-3 w-3 rotate-45 border-t border-l border-white"></span>
-        </div>
+          <TechIcon name="chevron-up" className="w-6 h-6" />
+        </Button>
       )}
-    </div>
+    </>
   );
 }
