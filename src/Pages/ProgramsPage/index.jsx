@@ -1,61 +1,49 @@
+"use client";
+
 import { useState, useMemo } from "react";
+import { motion } from "framer-motion";
+import { Grid, List } from "lucide-react";
 
 export default function ProgramsPage() {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("grid");
 
-  // Data for selectors
   const qualificationOptions = useMemo(
-    () => ["High School", "Undergraduate", "Postgraduate"],
+    () => ["All", "HND", "BSc", "BA", "BBA", "LLB"],
     []
   );
 
-  const countryOptions = useMemo(
+  const instituteOptions = useMemo(
+    () => ["All", "University of Essex", "Pearson BTEC", "University of Kent"],
+    []
+  );
+
+  const degreeOptions = useMemo(
     () => [
-      {
-        code: "US",
-        label: "United States",
-        cities: ["New York", "Los Angeles"],
-      },
-      { code: "CA", label: "Canada", cities: ["Toronto", "Vancouver"] },
-      { code: "FR", label: "France", cities: ["Paris", "Lyon"] },
-      { code: "DE", label: "Germany", cities: ["Berlin", "Munich"] },
+      "All",
+      "Computing",
+      "Business",
+      "Artificial Intelligence",
+      "Accounting",
+      "Law",
     ],
     []
   );
 
-  // SelectorGroup component handles three dependent selects
   function SelectorGroup() {
-    const [qualification, setQualification] = useState(qualificationOptions[0]);
-    const [country, setCountry] = useState(countryOptions[0].code);
-    const [city, setCity] = useState(countryOptions[0].cities[0]);
-
-    const citiesForCountry = useMemo(() => {
-      const found = countryOptions.find((c) => c.code === country);
-      return found ? found.cities : [];
-    }, [country]);
-
-    // when country changes, reset city to first city
-    function onCountryChange(e) {
-      const val = e.target.value;
-      setCountry(val);
-      const found = countryOptions.find((c) => c.code === val);
-      setCity(found ? found.cities[0] : "");
-    }
+    const [qualification, setQualification] = useState("All");
+    const [institute, setInstitute] = useState("All");
+    const [degree, setDegree] = useState("All");
 
     return (
-      <div className="space-y-3 flex flex-col md:flex-row gap-5">
-        <div>
-          <label
-            htmlFor="qualificationSelect"
-            className="block text-[11px] font-medium text-white"
-          >
-            Qualification
+      <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-gray-600 mb-2 uppercase tracking-wide">
+            SELECT QUALIFICATION TYPE
           </label>
           <select
-            id="qualificationSelect"
             value={qualification}
             onChange={(e) => setQualification(e.target.value)}
-            className="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 py-2 px-2 rounded-md"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none"
           >
             {qualificationOptions.map((q) => (
               <option key={q} value={q}>
@@ -65,43 +53,35 @@ export default function ProgramsPage() {
           </select>
         </div>
 
-        <div>
-          <label
-            htmlFor="countrySelect"
-            className="block text-[11px] font-medium text-white"
-          >
-            Country
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-gray-600 mb-2 uppercase tracking-wide">
+            FILTER BY INSTITUTE
           </label>
           <select
-            id="countrySelect"
-            value={country}
-            onChange={onCountryChange}
-            className="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 py-2 px-2 rounded-md"
+            value={institute}
+            onChange={(e) => setInstitute(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none"
           >
-            {countryOptions.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.label}
+            {instituteOptions.map((i) => (
+              <option key={i} value={i}>
+                {i}
               </option>
             ))}
           </select>
         </div>
 
-        <div>
-          <label
-            htmlFor="citySelect"
-            className="block text-[11px] font-medium text-white"
-          >
-            City
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-gray-600 mb-2 uppercase tracking-wide">
+            FILTER BY DEGREE
           </label>
           <select
-            id="citySelect"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 py-2 px-2 rounded-md"
+            value={degree}
+            onChange={(e) => setDegree(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg bg-white text-gray-700 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none"
           >
-            {citiesForCountry.map((ct) => (
-              <option key={ct} value={ct}>
-                {ct}
+            {degreeOptions.map((d) => (
+              <option key={d} value={d}>
+                {d}
               </option>
             ))}
           </select>
@@ -110,247 +90,211 @@ export default function ProgramsPage() {
     );
   }
 
-  // sample programs data (at least 9)
   const programsData = [
     {
       id: 1,
-      title: "Computer Science",
-      description: "BSc in Computer Science",
-      image: "src/assets/Images/programs/program/20.jpg",
+      title: "HND Computing",
+      description:
+        "This HND programme provides students with a solid foundation in computing, covering core programming, networking, databases, security and web development.",
+      image: "/modern-classroom-work.png",
+      institute: "Pearson BTEC",
+      type: "HND",
     },
     {
       id: 2,
-      title: "Business Administration",
-      description: "BBA program",
-      image: "src/assets/Images/programs/program/20.jpg",
+      title: "BSc Artificial Intelligence",
+      description:
+        "The BSc Artificial Intelligence programme by the Computer Science and Electronic Engineering department offers a top-tier education in AI technologies.",
+      image: "/placeholder-unboz.png",
+      institute: "University of Essex",
+      type: "BSc",
     },
     {
       id: 3,
-      title: "Mathematics",
-      description: "BS Mathematics",
-      image: "src/assets/Images/programs/program/20.jpg",
+      title: "BS Accounting and Finance",
+      description:
+        "The Business School is ranked in the top 150 for Business and Economics in THE World University Rankings by Subject 2023. The BS programme offers comprehensive training.",
+      image: "/male-student-library.png",
+      institute: "University of Essex",
+      type: "BS",
     },
     {
       id: 4,
-      title: "Physics",
-      description: "BS Physics",
-      image: "src/assets/Images/programs/program/20.jpg",
+      title: "BBA Business Administration",
+      description:
+        "Comprehensive business administration program covering management, marketing, finance, and strategic planning for future business leaders.",
+      image: "/modern-classroom-collaboration.png",
+      institute: "University of Kent",
+      type: "BBA",
     },
     {
       id: 5,
-      title: "Chemistry",
-      description: "BS Chemistry",
-      image: "src/assets/Images/programs/program/20.jpg",
+      title: "BA (Hons) Business",
+      description:
+        "Honours degree in business studies with focus on contemporary business practices, entrepreneurship, and global market dynamics.",
+      image: "/placeholder-1l5ld.png",
+      institute: "University of Kent",
+      type: "BA",
     },
     {
       id: 6,
-      title: "Biology",
-      description: "BS Biology",
-      image: "src/assets/Images/programs/program/20.jpg",
-    },
-    {
-      id: 7,
-      title: "English",
-      description: "BA English",
-      image: "src/assets/Images/programs/program/20.jpg",
-    },
-    {
-      id: 8,
-      title: "History",
-      description: "BA History",
-      image: "src/assets/Images/programs/program/20.jpg",
-    },
-    {
-      id: 9,
-      title: "Economics",
-      description: "BS Economics",
-      image: "src/assets/Images/programs/program/20.jpg",
+      title: "LLB (Hons) Bachelor of Laws",
+      description:
+        "Comprehensive law degree covering constitutional law, criminal law, contract law, and legal practice in modern judicial systems.",
+      image: "/law-students-library.png",
+      institute: "University of Essex",
+      type: "LLB",
     },
   ];
 
   return (
-    <main className="flex flex-col gap-6 h-screen  ">
-      <section className="breadcrum">
-        <nav className="flex  text-white borderg " aria-label="Breadcrumb">
-          <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <nav className="flex mb-6" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 md:space-x-2">
             <li className="inline-flex items-center">
-              <a
-                href="#"
-                className="inline-flex items-center text-sm font-medium text-white  hover:text-blue-600 dark:text-white dark:hover:text-white"
-              >
-                <svg
-                  className="w-3 h-3 me-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                </svg>
+              <a href="#" className="text-gray-500 hover:text-gray-700 text-sm">
                 Home
               </a>
             </li>
             <li>
               <div className="flex items-center">
-                <svg
-                  className="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                <a
-                  href="#"
-                  className="ms-1 text-sm font-medium text-white  hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
-                >
-                  Templates
-                </a>
-              </div>
-            </li>
-            <li aria-current="page">
-              <div className="flex items-center">
-                <svg
-                  className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                <span className="ms-1 text-sm font-medium text-white-500 md:ms-2 dark:text-gray-400">
-                  Flowbite
-                </span>
+                <span className="mx-2 text-gray-400">›</span>
+                <span className="text-gray-500 text-sm">Programmes</span>
               </div>
             </li>
           </ol>
         </nav>
-      </section>
-      <section className="main heading mb-5">
-        <h1 className="text-3xl font-bold  text-white-800 dark:text-white">
-          Programs
-        </h1>
-      </section>
-      <section className="toggle-section">
-        <div className=" h-[45px] w-[202px] rounded-full bg-white">
-          <div className="relative right-0  m-1  ">
-            <ul
-              className="relative flex flex-row flex-wrap justify-center items-center py-1.5 list-none rounded-5xl bg-[#c8c8c821]"
-              data-tabs="tabs"
-              role="list"
-            >
-              <li className="z-30 flex-auto text-center w-[5px] rounded-5xl">
-                <a
-                  onClick={() => setActiveTab("dashboard")}
-                  className={
-                    `z-30 flex items-center justify-center w-full  text-sm mb-0 transition-all ease-in-out border-0 rounded-5xl cursor-pointer bg-inherit ` +
-                    (activeTab === "dashboard"
-                      ? "text-white bg-black "
-                      : "text-slate-600")
-                  }
-                  data-tab-target=""
-                  role="tab"
-                  aria-selected={activeTab === "dashboard"}
+
+        <h1 className="text-4xl font-bold text-blue-900 mb-8">Programmes</h1>
+
+        <div className="flex items-center gap-4 mb-8">
+          <button
+            onClick={() => setActiveTab("grid")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+              activeTab === "grid"
+                ? "bg-blue-900 text-white"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            <Grid size={16} />
+            Grid
+          </button>
+          <button
+            onClick={() => setActiveTab("list")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+              activeTab === "list"
+                ? "bg-blue-900 text-white"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            <List size={16} />
+            List
+          </button>
+        </div>
+
+        {/* Filter selectors */}
+        <SelectorGroup />
+
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {activeTab === "grid" ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {programsData.map((program, index) => (
+                <motion.div
+                  key={program.id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="w-4 h-4 mr-1.5"
-                  >
-                    <path d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z"></path>
-                    <path d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z"></path>
-                    <path d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z"></path>
-                  </svg>
-                  <span className="ml-1">Grid</span>
-                </a>
-              </li>
-              <li className="z-30 flex-auto text-center bg-black w-[1px] rounded-full">
-                <a
-                  onClick={() => setActiveTab("profile")}
-                  className={
-                    `z-30 flex items-center justify-center w-full px-0 py-2 mb-0 text-sm transition-all ease-in-out border-0 rounded-lg cursor-pointer bg-inherit ` +
-                    (activeTab === "profile"
-                      ? "text-white bg-black "
-                      : "text-slate-600")
-                  }
-                  data-tab-target=""
-                  role="tab"
-                  aria-selected={activeTab === "profile"}
+                  <div className="relative h-48 bg-gray-100">
+                    <img
+                      src={program.image || "/placeholder.svg"}
+                      alt={program.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-blue-900 text-white px-3 py-1 rounded text-sm font-medium">
+                      {program.type}
+                    </div>
+                    <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-2 py-1 rounded text-xs">
+                      {program.institute}
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-blue-900 mb-3">
+                      {program.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {program.description}
+                    </p>
+                    <a
+                      href="#"
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
+                    >
+                      Read More
+                      <span className="ml-1">→</span>
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {programsData.map((program, index) => (
+                <motion.div
+                  key={program.id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="w-4 h-4 mr-1.5"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span className="ml-1">List</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section className="selectors-container flex  md:flex-row flex-col gap-6">
-        <div className="select ">
-          {/* Replaced with dynamic selects below */}
-          <SelectorGroup />
-        </div>
-      </section>
-      <section className="program-container">
-        {/* Responsive grid: 1 col mobile, 2 sm, 3 md, 4 lg */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {programsData.map((p) => (
-            <article
-              key={p.id}
-              className="card rounded-lg overflow-hidden shadow bg-white flex flex-col"
-            >
-              <div className="h-40 md:h-48 w-full bg-gray-200">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="p-4 flex-1 flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 flex-1">
-                  {p.description}
-                </p>
-                <div className="mt-4">
-                  <button className="px-3 py-2 bg-black text-white rounded-md text-sm">
-                    View
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+                  <div className="flex flex-col sm:flex-row">
+                    <div className="relative w-full sm:w-64 h-48 sm:h-32 bg-gray-100 flex-shrink-0">
+                      <img
+                        src={program.image || "/placeholder.svg"}
+                        alt={program.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-2 left-2 bg-blue-900 text-white px-2 py-1 rounded text-xs font-medium">
+                        {program.type}
+                      </div>
+                    </div>
+
+                    <div className="flex-1 p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2">
+                        <h3 className="text-xl font-bold text-blue-900 mb-2 sm:mb-0">
+                          {program.title}
+                        </h3>
+                        <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded self-start">
+                          {program.institute}
+                        </div>
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
+                        {program.description}
+                      </p>
+                      <a
+                        href="#"
+                        className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
+                      >
+                        Read More
+                        <span className="ml-1">→</span>
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </div>
   );
 }
