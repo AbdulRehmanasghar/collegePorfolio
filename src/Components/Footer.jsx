@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   const usefulLinks = [
-    { label: 'Programs', path: '/programs' },
+    { label: 'programmes', path: '/programmes' },
     { label: 'Events', path: '/events' },
     { label: 'Faculty', path: '/faculty' },
   ];

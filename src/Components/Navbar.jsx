@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -10,11 +9,11 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact-us' },
-    { label: 'Programs', path: '/programs' },
+    { label: 'programmes', path: '/programmes' },
     { label: 'Events', path: '/events' },
     { label: 'Faculty', path: '/faculty' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact-us' },
   ];
 
   useEffect(() => {
@@ -91,19 +90,27 @@ const Navbar = () => {
               {navItems.map((item) => renderNavButton(item))}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 lg:hidden">
               <button
-                onClick={() => handleNavigation('/programs')}
-                className="hidden lg:block bg-orange-400 text-white px-6 py-2 rounded-md hover:bg-orange-500 transition-colors duration-200 font-semibold cursor-pointer"
+                onClick={() => handleNavigation('/programmes')}
+                className="bg-accent text-white mr-12 px-4 py-2 rounded-md hover:bg-orange-500 transition-colors duration-200 font-semibold text-sm"
               >
-                Enroll now
+                Programmes
               </button>
-
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="lg:hidden text-white hover:text-orange-400 transition-colors duration-200 p-2"
+                className="text-white hover:text-orange-400 transition-colors duration-200 p-2"
               >
                 <Menu className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="hidden lg:flex items-center">
+              <button
+                onClick={() => handleNavigation('/programs')}
+                className="bg-orange-400 text-white px-6 py-2 rounded-md hover:bg-orange-500 transition-colors duration-200 font-semibold cursor-pointer"
+              >
+                Enroll now
               </button>
             </div>
           </div>
