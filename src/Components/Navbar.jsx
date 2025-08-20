@@ -107,7 +107,7 @@ const Navbar = () => {
 
             <div className="hidden lg:flex items-center">
               <button
-                onClick={() => handleNavigation('/programs')}
+                onClick={() => handleNavigation('/programmes')}
                 className="bg-orange-400 text-white px-6 py-2 rounded-md hover:bg-orange-500 transition-colors duration-200 font-semibold cursor-pointer"
               >
                 Enroll now
