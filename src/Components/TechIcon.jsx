@@ -76,6 +76,12 @@ import {
   Rotate3d,
   Notebook,
   MoveRight,
+  Eye,
+  Phone,
+  Twitter,
+  Bell,
+  Send,
+  Filter
 } from "lucide-react";
 
 const TechIcon = ({ name, className = "" }) => {
@@ -157,7 +163,12 @@ const TechIcon = ({ name, className = "" }) => {
     instagram: <Instagram className={className}  />,
     linkedin: <Linkedin className={className}  />,
     youtube: <Youtube className={className}  />,
-
+    eye: <Eye className={className}  />,
+    phone: <Phone className={className}  />,
+    twitter: <Twitter className={className}  />,
+    bell: <Bell className={className}  />,
+    send: <Send className={className}  />,
+    filter: <Filter className={className}  />,
 
   };
 

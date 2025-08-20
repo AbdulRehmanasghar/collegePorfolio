@@ -11,7 +11,7 @@ import NotFound from "./Components/NotFound";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
-const AppRoutes = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
@@ -31,4 +31,4 @@ const AppRoutes = () => {
   );
 };
 
-export default AppRoutes;
+export default App;

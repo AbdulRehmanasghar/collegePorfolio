@@ -10,7 +10,7 @@ const Footer = () => {
   const importantLinks = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact' },
+    { label: 'Contact', path: '/contact-us' },
   ];
 
   const usefulLinks = [

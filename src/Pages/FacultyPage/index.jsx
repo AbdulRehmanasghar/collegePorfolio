@@ -8,6 +8,7 @@ import Button from "../../Components/Button";
 import Breadcrumb from "../../Components/BreadCrumb";
 import NewsLetter from "../../Components/NewsLetter";
 import TechIcon from "../../Components/TechIcon";
+import Testimonials from "../HomePage/Testimonials";
 
 const FacultyPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -206,6 +207,9 @@ const FacultyPage = () => {
           )}
         </div>
       </section>
+     
+     <Testimonials />
+
       <NewsLetter />
     </main>
   );

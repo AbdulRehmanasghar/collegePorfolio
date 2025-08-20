@@ -204,7 +204,7 @@ export default function ProgramsPage() {
         >
           {activeTab === "grid" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {programsData.map((program, index) => (
+              {programsData.map((program) => (
                 <motion.div
                   key={program.id}
                   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
@@ -254,7 +254,7 @@ export default function ProgramsPage() {
             </div>
           ) : (
             <div className="space-y-6">
-              {programsData.map((program, index) => (
+              {programsData.map((program) => (
                 <motion.div
                   key={program.id}
                   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
