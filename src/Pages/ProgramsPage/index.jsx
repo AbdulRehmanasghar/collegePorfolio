@@ -96,7 +96,7 @@ export default function ProgramsPage() {
       title: "HND Computing",
       description:
         "This HND programme provides students with a solid foundation in computing, covering core programming, networking, databases, security and web development.",
-      image: "/modern-classroom-work.png",
+      image: "src/assets/Images/programs/modern-classroom-work.png",
       institute: "Pearson BTEC",
       type: "HND",
     },
@@ -105,7 +105,7 @@ export default function ProgramsPage() {
       title: "BSc Artificial Intelligence",
       description:
         "The BSc Artificial Intelligence programme by the Computer Science and Electronic Engineering department offers a top-tier education in AI technologies.",
-      image: "/placeholder-unboz.png",
+      image: "src/assets/Images/programs/placeholder-unbox.png",
       institute: "University of Essex",
       type: "BSc",
     },
@@ -114,7 +114,7 @@ export default function ProgramsPage() {
       title: "BS Accounting and Finance",
       description:
         "The Business School is ranked in the top 150 for Business and Economics in THE World University Rankings by Subject 2023. The BS programme offers comprehensive training.",
-      image: "/male-student-library.png",
+      image: "src/assets/Images/programs/male-student-library.png",
       institute: "University of Essex",
       type: "BS",
     },
@@ -123,7 +123,7 @@ export default function ProgramsPage() {
       title: "BBA Business Administration",
       description:
         "Comprehensive business administration program covering management, marketing, finance, and strategic planning for future business leaders.",
-      image: "/modern-classroom-collaboration.png",
+      image: "src/assets/Images/programs/modern-classroom-collaboration.png",
       institute: "University of Kent",
       type: "BBA",
     },
@@ -132,7 +132,7 @@ export default function ProgramsPage() {
       title: "BA (Hons) Business",
       description:
         "Honours degree in business studies with focus on contemporary business practices, entrepreneurship, and global market dynamics.",
-      image: "/placeholder-1l5ld.png",
+      image: "src/assets/Images/programs/placeholder-1l5ld.png",
       institute: "University of Kent",
       type: "BA",
     },
@@ -141,7 +141,7 @@ export default function ProgramsPage() {
       title: "LLB (Hons) Bachelor of Laws",
       description:
         "Comprehensive law degree covering constitutional law, criminal law, contract law, and legal practice in modern judicial systems.",
-      image: "/law-students-library.png",
+      image: "src/assets/Images/programs/law-students-library.png",
       institute: "University of Essex",
       type: "LLB",
     },
