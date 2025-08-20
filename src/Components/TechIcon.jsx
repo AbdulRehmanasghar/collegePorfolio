@@ -68,6 +68,14 @@ import {
   DollarSign,
   Monitor,
   Home,
+  Filter,
+  Phone,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Eye,
+  Send,
+  Bell,
 } from "lucide-react";
 
 const TechIcon = ({ name, className = "" }) => {
@@ -141,6 +149,14 @@ const TechIcon = ({ name, className = "" }) => {
     "dollar-sign": <DollarSign className={className} />,
     monitor: <Monitor className={className} />,
     home: <Home className={className} />,
+    filter: <Filter className={className} />,
+    phone: <Phone className={className} />,
+    linkedin: <Linkedin className={className} />,
+    twitter: <Twitter className={className} />,
+    facebook: <Facebook className={className} />,
+    eye: <Eye className={className} />,
+    send: <Send className={className} />,
+    bell: <Bell className={className} />,
   };
 
   return icons[name.toLowerCase()] || <span className={className}>{name}</span>;
