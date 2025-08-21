@@ -8,23 +8,46 @@ export default function ProgramsPage() {
   const [activeTab, setActiveTab] = useState("grid");
 
   const qualificationOptions = useMemo(
-    () => ["All", "HND", "BSc", "BA", "BBA", "LLB"],
+    () => [
+      "All",
+      "Intermediate",
+      "ADP Programs",
+      "B.Ed / M.Ed",
+      "Computer Short Courses",
+      "Domestic Cook Short Course",
+    ],
     []
   );
 
   const instituteOptions = useMemo(
-    () => ["All", "University of Essex", "Pearson BTEC", "University of Kent"],
+    () => ["All", "BISE DG KHAN", "Islamia University Bahawalpur", "PSAD"],
     []
   );
 
   const degreeOptions = useMemo(
     () => [
       "All",
-      "Computing",
-      "Business",
-      "Artificial Intelligence",
-      "Accounting",
-      "Law",
+      // Intermediate
+      "FSc",
+      "FA",
+      "FA(IT)",
+      "ICS",
+      // ADP Programs
+      "ADP CS",
+      "ADP English",
+      "ADP Urdu Education",
+      "ADP Zoology",
+      "ADP Math",
+      "ADP Saraiki",
+      // B.Ed / M.Ed
+      "B.Ed",
+      "M.Ed",
+      // Computer Short Courses
+      "CCA",
+      "Video Editing",
+      "Graphic Designing",
+      // Other
+      "Domestic Cook",
     ],
     []
   );
@@ -91,59 +114,158 @@ export default function ProgramsPage() {
   }
 
   const programsData = [
+    // Intermediate Classes - Affiliate with BISE DG KHAN
     {
       id: 1,
-      title: "HND Computing",
+      title: "FSc",
       description:
-        "This HND programme provides students with a solid foundation in computing, covering core programming, networking, databases, security and web development.",
+        "Intermediate FSc program focusing on pre-engineering and pre-medical foundations.",
       image: "src/assets/Images/programs/modern-classroom-work.png",
-      institute: "Pearson BTEC",
-      type: "HND",
+      institute: "BISE DG KHAN",
+      type: "Intermediate",
     },
     {
       id: 2,
-      title: "BSc Artificial Intelligence",
+      title: "FA",
       description:
-        "The BSc Artificial Intelligence programme by the Computer Science and Electronic Engineering department offers a top-tier education in AI technologies.",
+        "Intermediate FA program emphasizing arts, humanities and social sciences.",
       image: "src/assets/Images/programs/placeholder-unbox.png",
-      institute: "University of Essex",
-      type: "BSc",
+      institute: "BISE DG KHAN",
+      type: "Intermediate",
     },
     {
       id: 3,
-      title: "BS Accounting and Finance",
+      title: "FA(IT)",
       description:
-        "The Business School is ranked in the top 150 for Business and Economics in THE World University Rankings by Subject 2023. The BS programme offers comprehensive training.",
+        "FA with IT focuses on arts subjects combined with introductory information technology.",
       image: "src/assets/Images/programs/male-student-library.png",
-      institute: "University of Essex",
-      type: "BS",
+      institute: "BISE DG KHAN",
+      type: "Intermediate",
     },
     {
       id: 4,
-      title: "BBA Business Administration",
+      title: "ICS",
       description:
-        "Comprehensive business administration program covering management, marketing, finance, and strategic planning for future business leaders.",
+        "Intermediate Computer Science (ICS) covering programming, networking and algorithms.",
       image: "src/assets/Images/programs/modern-classroom-collaboration.png",
-      institute: "University of Kent",
-      type: "BBA",
+      institute: "BISE DG KHAN",
+      type: "Intermediate",
     },
+
+    // ADP Programs - Affiliate with Islamia University Bahawalpur
     {
       id: 5,
-      title: "BA (Hons) Business",
+      title: "ADP CS",
       description:
-        "Honours degree in business studies with focus on contemporary business practices, entrepreneurship, and global market dynamics.",
+        "Associate Diploma Program in Computer Science: practical computing and programming skills.",
       image: "src/assets/Images/programs/placeholder-1l5ld.png",
-      institute: "University of Kent",
-      type: "BA",
+      institute: "Islamia University Bahawalpur",
+      type: "ADP",
     },
     {
       id: 6,
-      title: "LLB (Hons) Bachelor of Laws",
+      title: "ADP English",
       description:
-        "Comprehensive law degree covering constitutional law, criminal law, contract law, and legal practice in modern judicial systems.",
+        "ADP in English focusing on language, literature and communication skills.",
       image: "src/assets/Images/programs/law-students-library.png",
-      institute: "University of Essex",
-      type: "LLB",
+      institute: "Islamia University Bahawalpur",
+      type: "ADP",
+    },
+    {
+      id: 7,
+      title: "ADP Urdu Education",
+      description:
+        "ADP in Urdu Education preparing teachers and educators in Urdu language instruction.",
+      image: "src/assets/Images/programs/modern-classroom-work.png",
+      institute: "Islamia University Bahawalpur",
+      type: "ADP",
+    },
+    {
+      id: 8,
+      title: "ADP Zoology",
+      description:
+        "ADP in Zoology covering animal biology, ecology and lab skills.",
+      image: "src/assets/Images/programs/placeholder-unbox.png",
+      institute: "Islamia University Bahawalpur",
+      type: "ADP",
+    },
+    {
+      id: 9,
+      title: "ADP Math",
+      description:
+        "ADP in Mathematics with emphasis on applied and theoretical mathematics.",
+      image: "src/assets/Images/programs/male-student-library.png",
+      institute: "Islamia University Bahawalpur",
+      type: "ADP",
+    },
+    {
+      id: 10,
+      title: "ADP Saraiki",
+      description:
+        "ADP in Saraiki language and culture, focusing on regional literature and linguistics.",
+      image: "src/assets/Images/programs/modern-classroom-collaboration.png",
+      institute: "Islamia University Bahawalpur",
+      type: "ADP",
+    },
+
+    // B.Ed / M.Ed (Affiliate assumed with Islamia University Bahawalpur)
+    {
+      id: 11,
+      title: "B.Ed",
+      description:
+        "Bachelor of Education program preparing professional teachers for schools.",
+      image: "src/assets/Images/programs/placeholder-1l5ld.png",
+      institute: "Islamia University Bahawalpur",
+      type: "B.Ed",
+    },
+    {
+      id: 12,
+      title: "M.Ed",
+      description:
+        "Master of Education focusing on advanced teaching methods and educational research.",
+      image: "src/assets/Images/programs/law-students-library.png",
+      institute: "Islamia University Bahawalpur",
+      type: "M.Ed",
+    },
+
+    // Computer Short Courses - Affiliate with PSAD
+    {
+      id: 13,
+      title: "CCA",
+      description:
+        "Computer short course (CCA) covering office applications and basic IT skills.",
+      image: "src/assets/Images/programs/modern-classroom-work.png",
+      institute: "PSAD",
+      type: "Short Course",
+    },
+    {
+      id: 14,
+      title: "Video Editing",
+      description:
+        "Short course in video editing: tools, workflows and basic motion graphics.",
+      image: "src/assets/Images/programs/placeholder-unbox.png",
+      institute: "PSAD",
+      type: "Short Course",
+    },
+    {
+      id: 15,
+      title: "Graphic Designing",
+      description:
+        "Short course in graphic design covering layout, typography and digital tools.",
+      image: "src/assets/Images/programs/male-student-library.png",
+      institute: "PSAD",
+      type: "Short Course",
+    },
+
+    // Domestic Cook Short Course
+    {
+      id: 16,
+      title: "Domestic Cook Short Course",
+      description:
+        "Practical short course teaching home cooking techniques, hygiene and basic catering.",
+      image: "src/assets/Images/programs/modern-classroom-collaboration.png",
+      institute: "Community Courses",
+      type: "Short Course",
     },
   ];
 
