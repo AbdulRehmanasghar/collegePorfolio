@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Send } from "lucide-react";
 import { motion as Motion } from "framer-motion";
-import Button from "../../components/Button";
-import ContactData from "../../Pages/ContactUsPage/Contact-Data"
+import Button from "../../Components/Button";
+import ContactData from "../../Pages/ContactUsPage/Contact-Data";
 import Breadcrumb from "../../Components/BreadCrumb";
 import FormInput from "../../Components/FormInput";
 
@@ -40,39 +40,39 @@ const ContactUsPage = () => {
       />
 
       <div className="container text-white">
-<div className="flex justify-center mb-16 sm:mb-20">
-  <Motion.div
-    className="relative w-full sm:w-3/4 lg:w-2/3 p-[2px] rounded-2xl shadow-xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 hover:rotate-1 hover:shadow-[0_0_25px_var(--color-accent)] 
+        <div className="flex justify-center mb-16 sm:mb-20">
+          <Motion.div
+            className="relative w-full sm:w-3/4 lg:w-2/3 p-[2px] rounded-2xl shadow-xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 hover:rotate-1 hover:shadow-[0_0_25px_var(--color-accent)] 
                bg-[linear-gradient(270deg,var(--color-accent),var(--color-border-gray),var(--color-accent))] 
                bg-[length:400%_400%] animate-gradientMove"
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.2 }}
-  >
-    <div className="rounded-2xl p-6 sm:p-10 h-full w-full relative overflow-hidden bg-[var(--color-navy-dark)]">
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[var(--color-border-gray)]/10 to-transparent opacity-40 pointer-events-none" />
-      <div className="text-4xl sm:text-5xl mb-4 text-[var(--color-accent)]">
-        {ContactData[0].icon}
-      </div>
-      <h2 className="text-lg sm:text-2xl font-extrabold mb-3 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-soft-white)] bg-clip-text text-transparent">
-        {ContactData[0].title}
-      </h2>
-      <p className="mb-2 text-base sm:text-lg text-[var(--color-soft-white)]">
-        📞 {ContactData[0].phone}
-      </p>
-      {ContactData[0].address && (
-        <p className="mb-2 text-base sm:text-lg text-[var(--color-soft-white)]">
-          📍 {ContactData[0].address}
-        </p>
-      )}
-      {ContactData[0].email && (
-        <p className="text-base sm:text-lg text-[var(--color-soft-white)]">
-          ✉️ {ContactData[0].email}
-        </p>
-      )}
-    </div>
-  </Motion.div>
-</div>
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="rounded-2xl p-6 sm:p-10 h-full w-full relative overflow-hidden bg-[var(--color-navy-dark)]">
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[var(--color-border-gray)]/10 to-transparent opacity-40 pointer-events-none" />
+              <div className="text-4xl sm:text-5xl mb-4 text-[var(--color-accent)]">
+                {ContactData[0].icon}
+              </div>
+              <h2 className="text-lg sm:text-2xl font-extrabold mb-3 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-soft-white)] bg-clip-text text-transparent">
+                {ContactData[0].title}
+              </h2>
+              <p className="mb-2 text-base sm:text-lg text-[var(--color-soft-white)]">
+                📞 {ContactData[0].phone}
+              </p>
+              {ContactData[0].address && (
+                <p className="mb-2 text-base sm:text-lg text-[var(--color-soft-white)]">
+                  📍 {ContactData[0].address}
+                </p>
+              )}
+              {ContactData[0].email && (
+                <p className="text-base sm:text-lg text-[var(--color-soft-white)]">
+                  ✉️ {ContactData[0].email}
+                </p>
+              )}
+            </div>
+          </Motion.div>
+        </div>
         <Motion.div
           className="shadow-2xl bg-navy-dark rounded-2xl p-6 sm:p-8 lg:p-10 border relative overflow-hidden"
           style={{
@@ -84,9 +84,10 @@ const ContactUsPage = () => {
         >
           <div
             className="absolute top-0 left-0 w-full h-1 rounded-t-2xl"
-style={{
-  background: "linear-gradient(to right, var(--color-accent) 100%, var(--color-bg) 100%)",
-}}
+            style={{
+              background:
+                "linear-gradient(to right, var(--color-accent) 100%, var(--color-bg) 100%)",
+            }}
           ></div>
 
           <h2
@@ -113,26 +114,26 @@ style={{
               onChange={handleChange}
               placeholder="Enter your name"
               required
-  className="text-gray-700 bg-transparent border-gray-300"  
+              className="text-gray-700 bg-transparent border-gray-300"
             />
 
-<FormInput
-  type="email"
-  label="Email"
-  name="Email"
-  value={formData.Email}
-  onChange={handleChange}
-  placeholder="Enter your email"
-  required
-  className="text-gray-700 bg-transparent border-gray-300"  
-/>
+            <FormInput
+              type="email"
+              label="Email"
+              name="Email"
+              value={formData.Email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+              className="text-gray-700 bg-transparent border-gray-300"
+            />
             <FormInput
               label="Phone"
               name="Phone"
               value={formData.Phone}
               onChange={handleChange}
               placeholder="Enter your phone number"
-  className="text-gray-700 bg-transparent border-gray-300"  
+              className="text-gray-700 bg-transparent border-gray-300"
             />
 
             <div className="flex flex-col md:col-span-2">
@@ -140,20 +141,18 @@ style={{
                 className="font-medium mb-2 text-sm sm:text-base"
                 style={{ color: "var(--color-black)" }}
               >
-<label className="text-soft-white">
-  Message
-</label>
+                <label className="text-soft-white">Message</label>
               </label>
-<textarea
-  name="Message"
-  value={formData.Message}
-  onChange={handleChange}
-  placeholder="Write your message here..."
-  rows="5"
-  className="rounded-lg p-3 outline-none shadow-sm transition border 
+              <textarea
+                name="Message"
+                value={formData.Message}
+                onChange={handleChange}
+                placeholder="Write your message here..."
+                rows="5"
+                className="rounded-lg p-3 outline-none shadow-sm transition border 
              text-soft-white placeholder-white bg-transparent
              border-gray-300 focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)]"
-/>
+              />
             </div>
             <Button
               type="submit"

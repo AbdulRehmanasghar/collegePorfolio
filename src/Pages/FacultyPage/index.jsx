@@ -3,7 +3,7 @@ import Empty from "./Empty";
 import SingleGridItem from "./SingleGridItem";
 import SingleListItem from "./SingleListItem";
 import { facultyMembers, departments } from "./facultyData";
-import FormInput from "../../components/FormInput";
+import FormInput from "../../Components/FormInput";
 import Button from "../../Components/Button";
 import Breadcrumb from "../../Components/BreadCrumb";
 import NewsLetter from "../../Components/NewsLetter";
@@ -207,8 +207,8 @@ const FacultyPage = () => {
           )}
         </div>
       </section>
-     
-     <Testimonials />
+
+      <Testimonials />
 
       <NewsLetter />
     </main>
