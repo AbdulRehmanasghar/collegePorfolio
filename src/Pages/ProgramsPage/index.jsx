@@ -270,33 +270,38 @@ export default function ProgramsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white md:py-[300px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-[#002140] text-gray-100 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex mb-6" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-2">
             <li className="inline-flex items-center">
-              <a href="#" className="text-gray-500 hover:text-gray-700 text-sm">
+              <a
+                href="#"
+                className="text-orange-400 hover:text-orange-500 text-sm"
+              >
                 Home
               </a>
             </li>
             <li>
               <div className="flex items-center">
                 <span className="mx-2 text-gray-400">›</span>
-                <span className="text-gray-500 text-sm">Programmes</span>
+                <span className="text-gray-300 text-sm">Programmes</span>
               </div>
             </li>
           </ol>
         </nav>
 
-        <h1 className="text-4xl font-bold text-blue-900 mb-8">Programmes</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6">
+          Programmes
+        </h1>
 
         <div className="flex items-center gap-4 mb-8">
           <button
             onClick={() => setActiveTab("grid")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors border ${
               activeTab === "grid"
-                ? "bg-blue-900 text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-orange-500 text-white border-orange-500"
+                : "bg-transparent text-gray-300 border-transparent hover:bg-white/5 hover:border-white/10"
             }`}
           >
             <Grid size={16} />
@@ -304,10 +309,10 @@ export default function ProgramsPage() {
           </button>
           <button
             onClick={() => setActiveTab("list")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors border ${
               activeTab === "list"
-                ? "bg-blue-900 text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-orange-500 text-white border-orange-500"
+                : "bg-transparent text-gray-300 border-transparent hover:bg-white/5 hover:border-white/10"
             }`}
           >
             <List size={16} />
@@ -329,47 +334,48 @@ export default function ProgramsPage() {
               {programsData.map((program) => (
                 <motion.div
                   key={program.id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.2 }}
+                  className="bg-navy-dark rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden group"
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.25 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <div className="relative h-48 bg-gray-100">
+                  <div className="relative overflow-hidden h-48">
                     <img
                       src={program.image || "/placeholder.svg"}
                       alt={program.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className="absolute top-4 left-4 bg-blue-900 text-white px-3 py-1 rounded text-sm font-medium">
-                      {program.type}
-                    </div>
-                    <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-2 py-1 rounded text-xs">
-                      {program.institute}
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-blue-900 mb-3">
-                      {program.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      {program.description}
-                    </p>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="mb-4">
+                      <div className="inline-block bg-orange-500 text-white px-3 py-1 rounded text-xs font-semibold">
+                        {program.type}
+                      </div>
+                      <h3 className="text-xl font-bold text-white mt-3">
+                        {program.title}
+                      </h3>
+                      <p className="text-accent text-sm mt-1">
+                        {program.institute}
+                      </p>
+                      <p className="text-soft-white text-sm mt-3">
+                        {program.description}
+                      </p>
+                    </div>
 
-                    {/* Animated underline link */}
-                    <a
-                      href="#"
-                      className="inline-flex flex-col items-start text-blue-600 hover:text-blue-800 font-medium text-sm group"
-                    >
-                      <span className="inline-flex items-center">
-                        Read More
-                        <span className="ml-1 transition-transform transform group-hover:translate-x-1">
-                          →
-                        </span>
-                      </span>
-                      <span className="block h-0.5 bg-blue-600 w-0 group-hover:w-full transition-all duration-300 mt-1" />
-                    </a>
+                    <div className="mt-auto flex items-center justify-between">
+                      <a
+                        href="#"
+                        className="text-orange-400 hover:text-orange-500 font-medium"
+                      >
+                        Read More →
+                      </a>
+                      {/* <button className="px-4 py-2 bg-orange-500 text-white rounded-lg">
+                        View
+                      </button> */}
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -379,50 +385,46 @@ export default function ProgramsPage() {
               {programsData.map((program) => (
                 <motion.div
                   key={program.id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                  className="bg-navy-dark rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden group"
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                 >
                   <div className="flex flex-col sm:flex-row">
-                    <div className="relative w-full sm:w-64 h-48 sm:h-32 bg-gray-100 flex-shrink-0">
+                    <div className="relative w-full sm:w-64 h-48 sm:h-32 bg-[#021b2a] flex-shrink-0 overflow-hidden">
                       <img
                         src={program.image || "/placeholder.svg"}
                         alt={program.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      <div className="absolute top-2 left-2 bg-blue-900 text-white px-2 py-1 rounded text-xs font-medium">
-                        {program.type}
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
 
                     <div className="flex-1 p-6">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2">
-                        <h3 className="text-xl font-bold text-blue-900 mb-2 sm:mb-0">
+                        <h3 className="text-xl font-bold text-white mb-2 sm:mb-0">
                           {program.title}
                         </h3>
-                        <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded self-start">
+                        <div className="text-xs text-accent px-2 py-1 rounded self-start">
                           {program.institute}
                         </div>
                       </div>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
+                      <p className="text-soft-white text-sm leading-relaxed mb-4 line-clamp-2">
                         {program.description}
                       </p>
 
-                      {/* Animated underline link */}
-                      <a
-                        href="#"
-                        className="inline-flex flex-col items-start text-blue-600 hover:text-blue-800 font-medium text-sm group"
-                      >
-                        <span className="inline-flex items-center">
-                          Read More
-                          <span className="ml-1 transition-transform transform group-hover:translate-x-1">
-                            →
-                          </span>
-                        </span>
-                        <span className="block h-0.5 bg-blue-600 w-0 group-hover:w-full transition-all duration-300 mt-1" />
-                      </a>
+                      <div className="flex items-center justify-between">
+                        <a
+                          href="#"
+                          className="text-orange-400 hover:text-orange-500 font-medium"
+                        >
+                          Read More →
+                        </a>
+                        {/* <button className="px-4 py-2 bg-orange-500 text-white rounded-lg">
+                          View
+                        </button> */}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
